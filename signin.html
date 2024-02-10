@@ -42,7 +42,7 @@
         <p class="tab_content_subtitle">Entre tes informations pour te
           connecter</p>
         <form class="account_content_form"
-              action="dashboard.html" method="POST" id="signin_forù">
+              action="dashboard.html" method="POST" id="signin_form">
           <div class="account_content_form_content">
             <label for="email_signin">Email</label>
             <input type="email" id="email_signin" name="email" required
@@ -52,6 +52,9 @@
             <label for="password_signin">Mot de passe</label>
             <input type="password" id="password_signin" name="password" required
                    placeholder="Mot de passe">
+          </div>
+          <div class="error_form">
+            <ul id="error_list"></ul>
           </div>
           <div class="account_content_form_content">
             <input type="submit" value="Connexion">

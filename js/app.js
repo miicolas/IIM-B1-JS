@@ -102,7 +102,7 @@ function navTap() {
   });
 }
 
-function formVerification() {
+function formVerificationSignup() {
   const form = document.getElementById("signup_form");
   if (!form) return;
 
@@ -166,6 +166,49 @@ function formVerification() {
   }
 }
 
+function formVerificationLogin() {
+  const formLogin = document.getElementById("signin_form");
+  if (!formLogin) return;
+
+  formLogin.addEventListener("submit", function (e) {
+    e.preventDefault()
+    let email = document.querySelector("#email_signin");
+    let password = document.querySelector("#password_signin");
+
+
+
+    const errorList = document.getElementById("error_list");
+    errorList.innerHTML = "";
+
+    if (email.value === "" || email.value.indexOf("@") === -1) {
+      addErrorToList("L'adresse email n'est pas valide");
+    }
+
+    if (password.value === "" || password.value.length < 8) {
+      addErrorToList("Le mot de passe doit contenir au moins 8 caractères");
+    }
+
+    if (errorList.children.length > 0) {
+      const errorMessage = document.querySelector(".error_form");
+      errorMessage.style.display = "block";
+    } else {
+      const successMessage = document.querySelector(".success_form");
+      successMessage.style.display = "block";
+      setTimeout(() => {
+        formLogin.submit();
+      }, 2000);
+    }
+
+    console.log("Formulaire envoyé");
+  });
+  function addErrorToList(errorMessage) {
+    const errorList = document.getElementById("error_list");
+    const errorItem = document.createElement("li");
+    errorItem.textContent = errorMessage;
+    errorList.appendChild(errorItem);
+  }
+}
+
 function burgerMenu() {
   const burgerIcon = document.getElementById("menuIcon");
   const overlay = document.getElementById("overlay");
@@ -213,6 +256,7 @@ document.addEventListener("DOMContentLoaded", function () {
   openTab();
   burgerMenu();
   darkMode();
-  formVerification();
+  formVerificationLogin();
+  formVerificationSignup();
   Carousel();
 });
