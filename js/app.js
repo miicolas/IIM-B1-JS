@@ -251,6 +251,43 @@ tabButtons.forEach(button => {
 }
 
 
+function filterCards() {
+  const filterAll = document.getElementById('BtnAll');
+  const filterGryff = document.getElementById('BtnGryff');
+  const filterPouff = document.getElementById('BtnPouff');
+  const filterSerdaigle = document.getElementById('BtnSerdaigle');
+  const filterSerpentard = document.getElementById('BtnSerpen');
+
+  const filterButtons = [filterAll, filterGryff, filterPouff, filterSerdaigle, filterSerpentard];
+
+  filterButtons.forEach((button) => { // Pour chaque bouton du filtre 
+      button.addEventListener("click", () => { // Quand on clique sur un bouton
+          filterButtons.forEach((btn) => {   // Pour chaque bouton du filtre on enlève la classe active
+              btn.classList.remove("select");
+          });
+          button.classList.add("select");
+
+          const maison = button.getAttribute("data-house");
+          console.log(maison);
+
+          filterCardsByType(maison);
+      });
+  });
+
+  function filterCardsByType(maison) {
+      const cards = document.querySelectorAll('.card');
+      cards.forEach((card) => {
+          const cardType = card.getAttribute("data-house");
+          if (maison === "Tous" || maison === cardType) {
+              card.style.display = "block"; // Afficher les cartes correspondantes
+          } else {
+              card.style.display = "none"; // Cacher les cartes qui ne correspondent pas
+          }
+      });
+  }
+}
+
+
 document.addEventListener("DOMContentLoaded", function () {
   navTap();
   openTab();
@@ -259,4 +296,6 @@ document.addEventListener("DOMContentLoaded", function () {
   formVerificationLogin();
   formVerificationSignup();
   Carousel();
+  filterCards();
 });
+

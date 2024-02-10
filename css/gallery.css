@@ -45,6 +45,7 @@
     overflow-y: scroll;
     justify-content: center;
     align-items: center;
+    width: 100%;
     
 }
 
@@ -67,4 +68,15 @@
 
 .filter-button {
     gap: 1rem;
+}
+
+.filter-button button {
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--color-primary);
+    border-radius: 0.5rem;
+}
+
+.filter-button button.select {
+    background-color: var(--color-primary);
+    color: var(--color-text-3);
 }
