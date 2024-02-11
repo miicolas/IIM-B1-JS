@@ -22,7 +22,6 @@ function darkMode() {
     body.classList.remove("dark-mode");
     rulesContent.forEach((container) => {
       container.classList.remove("dark-mode");
-    
     });
     titleForm.forEach((title) => {
       title.classList.remove("dark-mode");
@@ -31,7 +30,6 @@ function darkMode() {
       form.classList.remove("dark-mode");
     }
     );
-
   }
   darkModeButton.forEach((button) => {
     button.addEventListener("click", function () {
@@ -46,7 +44,6 @@ function darkMode() {
         form.classList.toggle("dark-mode");
       }
       );
-
       localStorage.setItem("darkMode", body.classList.contains("dark-mode"));
       localStorage.setItem("darkMode", rulesContent.classList.contains("dark-mode"));
       localStorage.setItem("darkMode", titleForm.classList.contains("dark-mode"));
@@ -260,9 +257,9 @@ function filterCards() {
 
   const filterButtons = [filterAll, filterGryff, filterPouff, filterSerdaigle, filterSerpentard];
 
-  filterButtons.forEach((button) => { // Pour chaque bouton du filtre 
-      button.addEventListener("click", () => { // Quand on clique sur un bouton
-          filterButtons.forEach((btn) => {   // Pour chaque bouton du filtre on enlève la classe active
+  filterButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+          filterButtons.forEach((btn) => {  
               btn.classList.remove("select");
           });
           button.classList.add("select");
@@ -279,9 +276,9 @@ function filterCards() {
       cards.forEach((card) => {
           const cardType = card.getAttribute("data-house");
           if (maison === "Tous" || maison === cardType) {
-              card.style.display = "block"; // Afficher les cartes correspondantes
+              card.style.display = "block";
           } else {
-              card.style.display = "none"; // Cacher les cartes qui ne correspondent pas
+              card.style.display = "none";
           }
       });
   }
